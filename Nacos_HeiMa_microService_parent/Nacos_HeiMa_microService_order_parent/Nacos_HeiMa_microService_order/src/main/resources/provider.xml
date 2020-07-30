@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+	
+	<dubbo:registry address="nacos://127.0.0.1:8848?backup=127.0.0.1:8849,127.0.0.1:8850"></dubbo:registry>	<!-- 注意：这里用nacos作为注册中心，所以是“nacos://”而不是“zookeeper://” -->
+	
+	<dubbo:protocol name="dubbo" port="12345"></dubbo:protocol>
+	<dubbo:service interface="com.asiainfo.service.api.IUserService" ref="userServiceImpl" timeout="0" retries="10"></dubbo:service>
+	<bean id="userServiceImpl" class="com.asiainfo.service.impl.UserServiceImpl"></bean>
+</beans>
