@@ -1,0 +1,12 @@
+spring: 
+  application:
+    name: Nacos-HeiMa-neflix-consumer 
+  cloud: 
+    nacos:
+      discovery:  #配置nacos服务发现（注册中心）地址
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 #nacos集群
+        namespace: bcdc77ae-9102-45e2-9801-e4129972dfbf #指定dev环境的namespace，注意这里填的是namespace的id，如果不指定会使用默认的public命名空间，而且namespace要和提供者的namespace相同，因为namespace是互相隔离的，如果不相同会导致想要调用的服务提供者应用找不到
+        cluster-name: consumer-cluster #如果不指定使用默认的集群名称-DEFAULT
+
+server:
+  port: 8080
