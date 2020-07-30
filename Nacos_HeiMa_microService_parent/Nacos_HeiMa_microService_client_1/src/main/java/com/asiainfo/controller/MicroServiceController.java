@@ -5,14 +5,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.asiainfo.service.api.IUserService;
+import com.asiainfo.service.api.IOrderService;
 
 @RestController
 public class MicroServiceController {
 	@Autowired
 	private ConfigurableApplicationContext configurableApplicationContext;
 	@Autowired
-	private IUserService userService;
+	private IOrderService userService;
 	
 	@GetMapping("/login")
 	public String login() {

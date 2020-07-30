@@ -1,0 +1,17 @@
+server:
+  port: 8091
+  
+spring:
+  application:
+    name: Nacos-HeiMa-microService-user
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+        namespace: 6823ecd4-9f84-4bab-9d4c-20985949a481
+        group: Nacos-HeiMa-microService-user
+        file-extension: yml
+      discovery:
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+        namespace: 6823ecd4-9f84-4bab-9d4c-20985949a481
+        cluster-name: user-cluster

@@ -1,5 +1,5 @@
 package com.asiainfo.service.api;
 
-public interface IUserService {
+public interface IOrderService {
 	String getUserById();
 }
