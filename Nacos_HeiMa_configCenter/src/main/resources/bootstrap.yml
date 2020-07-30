@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: Nacos_HeiMa_configCenter
+  cloud:
+    nacos:
+      config: #从nacos获取配置文件的方式有三种：1、{应用名称}.{扩展名}拼接的方式 2、扩展配置的方式（ext-config） 3、共享配置的方式（shared-dataids），这三种方式的优先级依次递减，高优先级可以覆盖低优先级配置的同名属性
+#        enabled: false #关闭从nacos读取配置
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+        namespace: bcdc77ae-9102-45e2-9801-e4129972dfbf
+        group: Nacos_HeiMa_configCenter
+        file-extension: yml
+         #一个应用一般不只有一个配置文件，如果配置多个配置文件可以使用扩展配置（ext-config）或者共享配置（shared-dataids）之一即可
+        ext-config: #扩展配置文件的data-id必须但文件后缀（即dataId全名称），不受上面file-extension配置的影响
+        #ext-config是一个数组的配置，它是有优先级的，后指定的配置文件的优先级要高于先指定的优先级，即后指定的配置文件会覆盖先指定配置文件同名的属性
+        - data-id: db.properties  #没有指定group，默认取DEFAULT_GROUP下面的文件，没有指定refresh属性则不支持动态刷新。
+        - data-id: tools.properties
+          group: Nacos_HeiMa_configCenter #指定了分组默认取该分组下的文件，没有指定refresh属性则不支持动态刷新
+        - data-id: mq.properties
+          group: Nacos_HeiMa_configCenter
+          refresh: true #只有指定了refresh属性才支持动态刷新
+        #共享配置来实现读取配置中心的多个配置文件，但是注意：shared-dataids只能读取group为DEFAULT_GROUP下的配置文件，不能指定group的值
+        #当一个应用有多个配置文件时建议使用ext-config的方式来读取，因为它比较灵活，shared-dataids只能读取DEFAULT_GROUP下的配置文件
+#        shared-dataids: test.yml  #注：这些dataId必须写上扩展名，此配置不受上面file-extension配置的影响，多个配置文件用逗号分割
+#        refreshable-dataids: db.properties  #在上面shared-dataids配置的那些文件里，如果想实现动态刷新则必须在refreshable-dataids进行指定，注意指定的也是带扩展名的文件名，本配置也不受file-extension配置的影响
+server:
+  port: 9090
