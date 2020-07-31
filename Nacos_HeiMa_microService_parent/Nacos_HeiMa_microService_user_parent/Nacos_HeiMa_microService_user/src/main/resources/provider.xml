@@ -6,7 +6,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
 	<dubbo:registry address="nacos://127.0.0.1:8848?backup=127.0.0.1:8849,127.0.0.1:8850"></dubbo:registry>
-	<dubbo:protocol name="dubbo" port="12345"></dubbo:protocol>
-	<dubbo:service id="userService" interface="com.asiainfo.service.api.IUserService" ref="userServiceImpl" version="1.0.0" group="g1"></dubbo:service>
+	<dubbo:protocol name="dubbo" port="54321"></dubbo:protocol>
+	<dubbo:service interface="com.asiainfo.service.api.IUserService" ref="userServiceImpl"></dubbo:service>
 	<bean id="userServiceImpl" class="com.asiainfo.service.impl.UserServiceImpl"></bean>
 </beans>

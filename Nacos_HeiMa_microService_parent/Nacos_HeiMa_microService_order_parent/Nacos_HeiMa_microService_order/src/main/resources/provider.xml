@@ -6,8 +6,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 	
 	<dubbo:registry address="nacos://127.0.0.1:8848?backup=127.0.0.1:8849,127.0.0.1:8850"></dubbo:registry>	<!-- 注意：这里用nacos作为注册中心，所以是“nacos://”而不是“zookeeper://” -->
-	
 	<dubbo:protocol name="dubbo" port="12345"></dubbo:protocol>
-	<dubbo:service interface="com.asiainfo.service.api.IOrderService" ref="orderServiceImpl" timeout="0" retries="10"></dubbo:service>
+	<dubbo:service interface="com.asiainfo.service.api.IOrderService" ref="orderServiceImpl"></dubbo:service>
 	<bean id="orderServiceImpl" class="com.asiainfo.service.impl.OrderServiceImpl"></bean>
 </beans>

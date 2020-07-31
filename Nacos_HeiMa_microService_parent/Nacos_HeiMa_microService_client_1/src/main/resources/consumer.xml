@@ -7,5 +7,5 @@
 	
 	<dubbo:registry address="nacos://127.0.0.1:8848?backup=127.0.0.1:8849,127.0.0.1:8850"></dubbo:registry>
 	<dubbo:reference id="orderService" interface="com.asiainfo.service.api.IOrderService"></dubbo:reference>
-	<dubbo:reference id="userService" interface="com.asiainfo.service.api.IUserService" version="1.0.0" group="g1" timeout="0"></dubbo:reference>
+	<dubbo:reference id="userService" interface="com.asiainfo.service.api.IUserService"></dubbo:reference>
 </beans>
